@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revival Ark | Donate</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playball&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+
+  <style>
+    .page { position: relative; padding: 22px 0 70px; }
+    .donate-hero { padding-top: 18px; text-align: center; }
+    .donate-hero .container { max-width: 980px; }
+
+    .back{
+      position: absolute;
+      left: 26px;
+      top: 92px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: rgba(0,0,0,.06);
+      color: #111;
+      text-decoration: none;
+    }
+    .back:hover{ background: rgba(0,0,0,.09); }
+
+    .donate-title{
+      margin: 0 0 10px;
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.06;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+
+    .donate-sub{
+      margin: 0 auto 16px;
+      max-width: 760px;
+      color: #1f1f1f;
+      opacity: .92;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    .donate-note{ margin: 0 0 24px; font-size: 30px; line-height: 1.05; }
+
+    .donate-actions{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 34px;
+      padding-bottom: 10px;
+    }
+
+    .donate-block{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      box-shadow: none !important;
+      background: transparent !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+
+    .donate-label{
+      margin-bottom: 12px;
+      font-size: 13px;
+      color: rgba(0,0,0,.45);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .donate-actions .btn{
+      width: min(520px, 86vw);
+      height: 56px;
+      padding: 0 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .donate-actions .btn-outline{ border-width: 1.6px; }
+
+    .brand-logo{ height: 32px; width: auto; display: block; filter: invert(1); }
+
+    @media (max-width: 560px){
+      .back{ left: 12px; top: 76px; }
+      .donate-note{ font-size: 26px; }
+      .donate-sub{ font-size: 12.5px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Revival Ark Home">
+        <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="brand-logo" />
+        Revival Ark
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+     <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="who-we-are.html">About Us</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="donation.html">Support Our Vision</a>
+        <a href="contact.html">Contact Us</a>
+        <!-- AUTH SLOT (single element) -->
+         <a href="signin.html" id="navLogin" class="nav-auth">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <a class="back" href="index.html" aria-label="Go back">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M14 6L8 12L14 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+
+    <section class="donate-hero">
+      <div class="container">
+        <h1 class="donate-title">
+          Every Contribution<br />
+          Helps Us Reach<br />
+          <span class="script accent">One more heart.</span>
+        </h1>
+
+        <p class="donate-sub">
+          Your donations make our outreach possible. We accept food, money, clothes, blankets, toys, Bibles, and
+          any essential living products. Every contribution helps support individuals in need and strengthens our
+          mission. Thank you for partnering with us.
+        </p>
+
+        <p class="donate-note script accent">100% of your donation goes to outreach. Always.</p>
+
+        <div class="donate-actions">
+          <div class="donate-block">
+            <div class="donate-label">Monetary Donations</div>
+            <button class="btn btn-solid" id="btnMonetary" type="button">Donate</button>
+          </div>
+
+          <div class="donate-block">
+            <div class="donate-label">Non-Monetary Donations</div>
+            <button class="btn btn-outline" id="btnNonMonetary" type="button">Donate</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="footer-logo-img" />
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3>GET TO KNOW US</h3>
+          <a href="who-we-are.html">Get To Know Us</a>
+          <a href="who-we-are.html#team">Meet The Team</a>
+          <a href="gallery.html">Our Gallery</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>HELP US MAKE A DIFFERENCE</h3>
+          <a href="#contact">Pray</a>
+          <a href="donation.html">Donate</a>
+          <a href="whatsapp.html">Volunteer</a>
+          <a href="#contact">Collaborate</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>CONNECT WITH US</h3>
+          <p class="footer-text">+27 67 225 2699</p>
+          <p class="footer-text">info@revival.ark.co.za</p>
+
+          <div class="social">
+            <a
+              href="https://www.instagram.com/revival_ark_?igsh=dGUxdmQyZGZlbHI0"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              title="Instagram"
+            >
+              <img src="./assets/images/instagram.png" alt="Instagram" class="social-icon" />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@revival.ark?_r=1&_t=ZS-93P5LzEWEWO"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              title="TikTok"
+            >
+              <img src="./assets/images/tiktok.png" alt="TikTok" class="social-icon" style="filter: invert(1)" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>© <span id="year"></span> Revival Ark. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script type="module" src="js/nav-auth.js"></script>
+
+
+  <script>
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+    $("#year").textContent = new Date().getFullYear();
+
+    (function navToggle() {
+      const btn = $(".nav-toggle");
+      const menu = $("#navMenu");
+      if (!btn || !menu) return;
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+
+    (function activeNav() {
+      const current = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+      $$(".nav-links a").forEach((a) => {
+        const href = (a.getAttribute("href") || "").split("#")[0].split("/").pop().toLowerCase();
+        if (href && href === current) a.classList.add("active");
+      });
+    })();
+
+    $("#btnMonetary")?.addEventListener("click", () => (location.href = "payment.html"));
+    $("#btnNonMonetary")?.addEventListener("click", () => (location.href = "non-monetary.html"));
+  </script>
+</body>
+</html>

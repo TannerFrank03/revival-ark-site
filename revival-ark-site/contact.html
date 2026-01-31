@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revival Ark | Contact Us</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playball&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+
+  <style>
+    .contact-page { padding: 40px 0 70px; }
+
+    .contact-header { text-align: center; margin-bottom: 36px; }
+    .contact-header .kicker {
+      font-family: "Playball", cursive;
+      color: var(--accent);
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+    .contact-header h1 { font-size: 54px; font-weight: 900; margin-bottom: 12px; }
+    .contact-header p {
+      max-width: 640px;
+      margin: 0 auto;
+      color: rgba(0,0,0,.65);
+      line-height: 1.6;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .contact-info { display: grid; gap: 18px; }
+
+    .info-card {
+      padding: 22px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+    }
+    .info-card h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      letter-spacing: .08em;
+      opacity: .7;
+    }
+    .info-card p { margin: 0; font-weight: 700; font-size: 16px; }
+
+    .contact-form {
+      padding: 28px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+    }
+    .contact-form h2 { font-size: 22px; font-weight: 800; margin: 0 0 18px; }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.15);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+
+    .contact-actions { display: flex; gap: 14px; margin-top: 18px; flex-wrap: wrap; }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+      font-weight: 800;
+      border-radius: 14px;
+      padding: 14px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      text-decoration: none;
+      min-width: 160px;
+    }
+
+    /* small success note (optional) */
+    .form-note{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(0,0,0,.55);
+      line-height: 1.5;
+    }
+
+    /* AUTH slot styling (safe defaults; shared.css can override) */
+    .nav-auth { margin-left: 10px; }
+    .nav-auth-user { margin-left: 10px; font-weight: 800; }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-header h1 { font-size: 42px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Revival Ark Home">
+        <img
+          src="./assets/images/Logos/Revival Ark Logo (Black).png"
+          alt="Revival Ark"
+          class="brand-logo"
+          style="filter: invert(1)"
+        />
+        Revival Ark
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+     <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="who-we-are.html">About Us</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="donation.html">Support Our Vision</a>
+        <a href="contact.html">Contact Us</a>
+        <!-- AUTH SLOT (single element) -->
+         <a href="signin.html" id="navLogin" class="nav-auth">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact-page">
+    <div class="container">
+      <div class="contact-header">
+        <div class="kicker">Get in Touch</div>
+        <h1>Contact Us</h1>
+        <p>
+          We’d love to hear from you. Whether you want to volunteer, collaborate,
+          donate, or simply ask a question — reach out anytime.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="info-card">
+            <h3>PHONE</h3>
+            <p>+27 67 225 2699</p>
+          </div>
+
+          <div class="info-card">
+            <h3>EMAIL</h3>
+            <p>info@revival.ark.co.za</p>
+          </div>
+
+          <div class="info-card">
+            <h3>WHATSAPP</h3>
+            <p>Message us directly on WhatsApp</p>
+          </div>
+        </div>
+
+        <!-- ✅ NETLIFY FORMS WIRED UP -->
+        <!-- Notes:
+             - data-netlify="true" enables Netlify Forms
+             - netlify-honeypot="bot-field" is spam protection
+             - hidden form-name is required for some setups + JS-free
+             - method="POST" required
+        -->
+        <form
+          class="contact-form"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/contact.html?sent=1"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+
+          <!-- Honeypot field -->
+          <p hidden>
+            <label>Don’t fill this out: <input name="bot-field" /></label>
+          </p>
+
+          <h2>Send us a message</h2>
+
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required />
+          </div>
+
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required />
+          </div>
+
+          <div class="form-group">
+            <textarea name="message" placeholder="Your Message" required></textarea>
+          </div>
+
+          <input type="hidden" name="source" value="Revival Ark Website - Contact Page" />
+
+          <div class="contact-actions">
+            <button class="btn btn-solid" type="submit">Send Message</button>
+            <a class="btn-whatsapp" href="whatsapp.html">WhatsApp</a>
+          </div>
+
+          <div class="form-note" id="sentNote" hidden>
+            ✅ Thanks! Your message has been sent. We’ll get back to you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img
+          src="./assets/images/Logos/Revival Ark Logo (Black).png"
+          alt="Revival Ark"
+          class="footer-logo-img"
+        />
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3>GET TO KNOW US</h3>
+          <a href="who-we-are.html">Get To Know Us</a>
+          <a href="who-we-are.html#team">Meet The Team</a>
+          <a href="gallery.html">Our Gallery</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>HELP US MAKE A DIFFERENCE</h3>
+          <a href="#contact">Pray</a>
+          <a href="donation.html">Donate</a>
+          <a href="whatsapp.html">Volunteer</a>
+          <a href="#contact">Collaborate</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>CONNECT WITH US</h3>
+          <p class="footer-text">+27 67 225 2699</p>
+          <p class="footer-text">info@revival.ark.co.za</p>
+
+          <div class="social">
+            <a
+              href="https://www.instagram.com/revival_ark_?igsh=dGUxdmQyZGZlbHI0"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              title="Instagram"
+            >
+              <img src="./assets/images/instagram.png" alt="Instagram" class="social-icon" />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@revival.ark?_r=1&_t=ZS-93P5LzEWEWO"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              title="TikTok"
+            >
+              <img
+                src="./assets/images/tiktok.png"
+                alt="TikTok"
+                class="social-icon"
+                style="filter: invert(1)"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>© <span id="year"></span> Revival Ark. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // mobile nav toggle
+    (function () {
+      const btn = document.querySelector(".nav-toggle");
+      const menu = document.getElementById("navMenu");
+      if (!btn || !menu) return;
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+
+    // nav active highlight
+    (function () {
+      const links = document.querySelectorAll(".nav-links a");
+      const current = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+
+      links.forEach((a) => {
+        const href = (a.getAttribute("href") || "")
+          .split("#")[0]
+          .split("/")
+          .pop()
+          .toLowerCase();
+        if (href && href === current) a.classList.add("active");
+      });
+    })();
+
+    // show success note after Netlify redirect (?sent=1)
+    (function () {
+      const sent = new URLSearchParams(location.search).get("sent");
+      const note = document.getElementById("sentNote");
+      if (sent && note) note.hidden = false;
+    })();
+  </script>
+
+  <!-- Your nav auth logic (shows Login vs Welcome Name) -->
+  <script type="module" src="js/nav-auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revival Ark | Secure Donation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/shared.css" />
+
+  <style>
+    :root{
+      --site-font: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    html, body, button, input, textarea, select{ font-family: var(--site-font); }
+
+    body{ background:#f4f4f4; }
+
+    .payment-page{
+      position: relative;
+      padding: 44px 0 88px;
+      overflow: hidden;
+      min-height: calc(100vh - 120px);
+    }
+    .payment-page::after{
+      content:"";
+      position:absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,.78), rgba(255,255,255,.78)),
+        url("./assets/images/image00026.jpeg");
+      background-size: cover;
+      background-position: center;
+      filter: blur(18px);
+      transform: scale(1.12);
+      opacity: .55;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .pay-shell{
+      position: relative;
+      z-index: 1;
+      width: min(1160px, calc(100% - 56px));
+      margin: 0 auto;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .pay-left,
+    .pay-right{
+      background:#fff;
+      border-radius: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.18);
+      border: 1px solid rgba(0,0,0,.06);
+      padding: 22px;
+      min-height: 520px;
+    }
+
+    .pay-left-img{
+      border-radius: 18px;
+      overflow:hidden;
+      background:#f2f2f2;
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+    }
+    .pay-left-img img{
+      width:100%;
+      height: 330px;
+      object-fit: cover;
+      display:block;
+    }
+
+    .pay-left-title{
+      margin: 16px 0 10px;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .pay-left-title .accent{ color: var(--accent); }
+
+    .pay-left-text{
+      margin: 0;
+      color: rgba(0,0,0,.55);
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 520px;
+    }
+
+    .pay-right{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pay-right-top{
+      display:flex;
+      align-items:flex-start;
+      gap: 12px;
+    }
+    .pay-top-title{
+      font-weight: 800;
+      font-size: 16px;
+      margin: 0 0 4px;
+    }
+    .pay-top-sub{
+      font-size: 14px;
+      color: rgba(0,0,0,.60);
+    }
+    .pay-top-sub .accent{
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .tabs{
+      display:flex;
+      width: 220px;
+      border-radius: 14px;
+      overflow:hidden;
+      background: rgba(0,0,0,.06);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .tab{
+      flex:1;
+      border: none;
+      background: transparent;
+      padding: 10px 14px;
+      font-weight: 900;
+      font-size: 12px;
+      cursor:pointer;
+      color: rgba(0,0,0,.65);
+    }
+    .tab.active{
+      background: var(--accent);
+      color:#fff;
+    }
+
+    .pay-card{
+      margin-top: 2px;
+      background: rgba(0,0,0,.035);
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,.06);
+      padding: 18px 18px 20px;
+      flex: 1;
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .section-title{
+      margin: 2px 0 8px;
+      font-weight: 900;
+      font-size: 13px;
+      color:#111;
+      display:flex;
+      align-items:center;
+      gap: 8px;
+    }
+    .section-title .muted{
+      font-weight: 600;
+      font-size: 12px;
+      color: rgba(0,0,0,.45);
+      font-style: italic;
+    }
+
+    .grid-1{ display:grid; gap: 10px; }
+
+    .input{
+      width:100%;
+      border: 1px solid rgba(0,0,0,.18);
+      border-radius: 2px;
+      padding: 12px 12px;
+      font-size: 13px;
+      outline:none;
+      background:#fff;
+    }
+    .input::placeholder{ color: rgba(0,0,0,.40); }
+
+    .amounts{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .amount{
+      min-width: 98px;
+      border: 1px solid rgba(227,27,35,.75);
+      background:#fff;
+      color: var(--accent);
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-weight: 900;
+      font-size: 13px;
+      cursor:pointer;
+      line-height: 1;
+      text-align:center;
+    }
+    .amount.active{
+      background: var(--accent);
+      color:#fff;
+      border-color: var(--accent);
+    }
+    .amount.custom{
+      min-width: 160px;
+      border-color: rgba(0,0,0,.18);
+      color: rgba(0,0,0,.45);
+    }
+
+    .pay-actions{
+      margin-top: 18px;
+      display:flex;
+      gap: 18px;
+      align-items:center;
+      flex-wrap: nowrap;
+    }
+
+    .pay-actions .btn,
+    .pay-actions .pay-btn{
+      height: 46px;
+      padding: 0 22px;
+      border-radius: 10px;
+      font-weight: 900;
+      font-size: 13px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      border: 1px solid rgba(0,0,0,.14);
+      background:#fff;
+      cursor:pointer;
+      white-space: nowrap;
+    }
+
+    .btn.pay-purple{
+      background: #6f63ff;
+      border-color: transparent;
+      color:#fff;
+      min-width: 168px;
+    }
+
+    .pay-btn.gpay{ min-width: 170px; }
+    .pay-btn.gpay img{ height: 18px; width:auto; display:block; }
+
+    .pay-btn.apple-pay{
+      background:#111;
+      border-color:#111;
+      color:#fff;
+      min-width: 150px;
+    }
+
+    @media (max-width: 1060px){
+      .pay-actions{ flex-wrap: wrap; }
+    }
+    @media (max-width: 980px){
+      .pay-shell{ grid-template-columns: 1fr; }
+      .pay-left, .pay-right{ min-height: auto; }
+      .pay-left-img img{ height: 280px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Revival Ark Home">
+        <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="brand-logo" />
+        Revival Ark
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="who-we-are.html">About Us</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="donation.html">Support Our Vision</a>
+        <a href="contact.html">Contact Us</a>
+        <!-- AUTH SLOT (single element) -->
+        <a href="signin.html" id="navLogin" class="nav-auth">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="payment-page">
+    <section class="pay-shell">
+      <aside class="pay-left">
+        <div class="pay-left-img" aria-label="Donation image">
+          <img src="./assets/images/image00026.jpeg" alt="Revival Ark outreach" />
+        </div>
+
+        <h2 class="pay-left-title">Give <span class="accent">Hope.</span> Make an <span class="accent">Impact.</span></h2>
+        <p class="pay-left-text">
+          Your generosity helps Revival Ark continue its mission of serving and uplifting communities through our
+          monthly Ark of Hope outreach.
+        </p>
+      </aside>
+
+      <section class="pay-right" aria-label="Donation form">
+        <div class="pay-right-top">
+          <div>
+            <div class="pay-top-title">Registered before?</div>
+            <div class="pay-top-sub">
+              <a class="accent" href="signin.html?returnTo=payment.html">Log In</a> to use saved details
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Donation frequency">
+          <button class="tab" data-tab="one" type="button" aria-selected="false">One-Time</button>
+          <button class="tab active" data-tab="monthly" type="button" aria-selected="true">Monthly</button>
+        </div>
+
+        <div class="pay-card">
+          <form id="donationForm" novalidate>
+            <div class="section-title">
+              Details <span class="muted">(All donors are kept anonymous)</span>
+            </div>
+
+            <div class="grid-1">
+              <input class="input" name="first" placeholder="First Name/Anonymous" />
+              <input class="input" name="last" placeholder="Last Name/Anonymous" />
+              <input class="input" name="email" placeholder="Email Address (Optional)" type="email" />
+            </div>
+
+            <div class="section-title" style="margin-top:18px;">
+              Secure Donations <span aria-hidden="true">🔒</span>
+              <span class="muted">(All donors are kept anonymous)</span>
+            </div>
+
+            <div class="amounts" role="group" aria-label="Donation amount">
+              <button class="amount active" type="button" data-amount="100">R 100</button>
+              <button class="amount" type="button" data-amount="500">R 500</button>
+              <button class="amount" type="button" data-amount="1000">R 1,000</button>
+              <button class="amount custom" type="button" data-amount="custom">Custom Amount</button>
+            </div>
+
+            <div class="pay-actions">
+              <button class="btn pay-purple" type="submit">Pay with Card</button>
+
+              <button class="pay-btn gpay" type="button" id="btnGooglePay" aria-label="Pay with Google Pay">
+                Pay with <img src="./assets/images/Logos/google-pay_2.png" alt="Google Pay" />
+              </button>
+
+              <button class="pay-btn apple-pay" type="button" id="btnApplePay">Pay with  Pay</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="footer-logo-img" />
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3>GET TO KNOW US</h3>
+          <a href="who-we-are.html">Get To Know Us</a>
+          <a href="who-we-are.html#team">Meet The Team</a>
+          <a href="gallery.html">Our Gallery</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>HELP US MAKE A DIFFERENCE</h3>
+          <a href="#contact">Pray</a>
+          <a href="donation.html">Donate</a>
+          <a href="whatsapp.html">Volunteer</a>
+          <a href="#contact">Collaborate</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>CONNECT WITH US</h3>
+          <p class="footer-text">+27 67 225 2699</p>
+          <p class="footer-text">info@revival.ark.co.za</p>
+
+          <div class="social">
+            <a
+              href="https://www.instagram.com/revival_ark_?igsh=dGUxdmQyZGZlbHI0"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              title="Instagram"
+            >
+              <img src="./assets/images/instagram.png" alt="Instagram" class="social-icon" />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@revival.ark?_r=1&_t=ZS-93P5LzEWEWO"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              title="TikTok"
+            >
+              <img src="./assets/images/tiktok.png" alt="TikTok" class="social-icon" style="filter: invert(1)" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>© <span id="year"></span> Revival Ark. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/payment.js"></script>
+  <script type="module" src="js/nav-auth.js"></script>
+
+
+  <script>
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+    $("#year").textContent = new Date().getFullYear();
+
+    (function navToggle() {
+      const btn = $(".nav-toggle");
+      const menu = $("#navMenu");
+      if (!btn || !menu) return;
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+
+    (function activeNav() {
+      const current = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+      $$(".nav-links a").forEach((a) => {
+        const href = (a.getAttribute("href") || "").split("#")[0].split("/").pop().toLowerCase();
+        if (href && href === current) a.classList.add("active");
+      });
+    })();
+
+    (function amountToggle() {
+      const buttons = $$(".amounts .amount");
+      buttons.forEach((b) => {
+        b.addEventListener("click", () => {
+          buttons.forEach((x) => x.classList.remove("active"));
+          b.classList.add("active");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

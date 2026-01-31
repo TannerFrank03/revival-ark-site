@@ -1,0 +1,250 @@
+<!-- whatsapp.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revival Ark | WhatsApp</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playball&display=swap" rel="stylesheet">
+
+  <!-- ✅ IMPORTANT: load your site-wide CSS (change path if needed) -->
+  <link rel="stylesheet" href="css/shared.css" />
+
+  <style>
+    /* Scoped to WhatsApp page so it doesn't clash with shared.css */
+    .wa-page{
+      --nav:#141414;
+      --accent:#e31b23;
+      --text:#0f0f0f;
+      --container:1120px;
+      --shadow:0 14px 30px rgba(0,0,0,.18);
+      min-height:100vh;
+      background:#fff;
+      color:var(--text);
+      font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .wa-page *{ box-sizing:border-box; }
+    .wa-page a{ color:inherit; text-decoration:none; }
+
+    /* container for this page only (avoid conflicting with shared .container) */
+    .wa-container{ width:min(var(--container),calc(100% - 48px)); margin:0 auto; }
+
+    /* Header (scoped) */
+    .wa-header{ position:sticky; top:0; z-index:50; background:var(--nav); color:#fff; border-bottom:1px solid rgba(255,255,255,.10); }
+    .wa-nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0; }
+    .wa-brand{ display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.08em; font-size:14px; }
+    .wa-mark{ width:28px; height:28px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.25); border-radius:10px; }
+    .wa-links{ display:flex; align-items:center; gap:28px; font-size:12px; opacity:.95; white-space:nowrap; }
+    .wa-links a{ padding:8px 0; }
+    .wa-links a:hover{ border-bottom:2px solid var(--accent); }
+    @media(max-width:860px){ .wa-links{ display:none; } }
+
+    /* Page */
+    .wa-main{
+      padding:54px 0 90px;
+      min-height: calc(100vh - 62px);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+    .wa-center{
+      width: min(860px, 100%);
+      text-align:center;
+      margin-top:18px;
+    }
+    .wa-kicker{
+      margin:0 0 6px;
+      font-family:"Playball","Brush Script MT",cursive;
+      color:var(--accent);
+      font-size:34px;
+      letter-spacing:.02em;
+    }
+    .wa-title{
+      margin:0 0 22px;
+      font-size:56px;
+      font-weight:900;
+      line-height:1.02;
+    }
+
+    /* Input-like CTA */
+    .wa-cta{
+      margin:10px auto 0;
+      width:min(520px, 100%);
+      height:46px;
+      border:2px solid #111;
+      border-radius:6px;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 10px 20px rgba(0,0,0,.08);
+    }
+    .wa-cta-left{
+      width:54px;
+      height:100%;
+      display:grid;
+      place-items:center;
+      border-right:2px solid #111;
+      background:#fff;
+    }
+    .wa-badge{
+      width:26px;height:26px;border-radius:999px;
+      display:grid;place-items:center;
+      background:#25D366;
+      color:#fff;
+      font-weight:900;
+      font-size:14px;
+    }
+    .wa-cta-body{
+      flex:1;
+      padding:0 12px;
+      font-size:13px;
+      color:#333;
+      opacity:.85;
+      text-align:left;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .wa-cta-right{
+      width:54px;
+      height:100%;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      background:#fff;
+    }
+    .wa-cta-right svg{ width:22px;height:22px; color:var(--accent); }
+    .wa-cta:hover .wa-cta-right{ background: rgba(227,27,35,.06); }
+
+    .wa-hint{
+      margin:12px auto 0;
+      font-size:12px;
+      color:#666;
+    }
+
+    @media(max-width:700px){
+      .wa-title{ font-size:44px; }
+      .wa-kicker{ font-size:30px; }
+    }
+  </style>
+</head>
+
+<body class="wa-page">
+ <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Revival Ark Home">
+        <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="brand-logo" />
+        Revival Ark
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="who-we-are.html">About Us</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="donation.html">Support Our Vision</a>
+        <a href="contact.html">Contact Us</a>
+        <!-- AUTH SLOT (single element) -->
+        <a href="signin.html" id="navLogin" class="nav-auth">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wa-main">
+    <div class="wa-center wa-container">
+      <p class="wa-kicker">Join Our Family?</p>
+      <h1 class="wa-title">Join our WhatsApp group</h1>
+
+      <a class="wa-cta" id="waJoin" href="https://chat.whatsapp.com/JhlA2uf4aHu4FkbvvHLrXQ?mode=gi_t" target="_blank" rel="noopener noreferrer" aria-label="Join our WhatsApp group">
+        <span class="wa-cta-left" aria-hidden="true">
+          <img class="wa-logo" src="./assets/images/Logos/77220-scalable-vector-graphics-logo-whatsapp-icon.png" style="width: 30px;" alt="WhatsApp">
+        </span>
+        <span class="wa-cta-body">Tap to join our WhatsApp group</span>
+        <span class="wa-cta-right" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+
+      <p class="wa-hint">This will open WhatsApp and prompt you to join the group.</p>
+    </div>
+  </main>
+
+  <!-- ✅ Footer now uses shared.css styles -->
+  <footer class="footer" id="contact">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="footer-logo-img" />
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3>GET TO KNOW US</h3>
+          <a href="who-we-are.html">Get To Know Us</a>
+          <a href="who-we-are.html#team">Meet The Team</a>
+          <a href="gallery.html">Our Gallery</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>HELP US MAKE A DIFFERENCE</h3>
+          <a href="#contact">Pray</a>
+          <a href="donation.html">Donate</a>
+          <a href="whatsapp.html">Volunteer</a>
+          <a href="#contact">Collaborate</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>CONNECT WITH US</h3>
+          <p class="footer-text">+27 67 225 2699</p>
+          <p class="footer-text">info@revival.ark.co.za</p>
+
+          <div class="social">
+            <a href="https://www.instagram.com/revival_ark_?igsh=dGUxdmQyZGZlbHI0" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+              <img src="./assets/images/instagram.png" alt="Instagram" class="social-icon" />
+            </a>
+
+            <a href="https://www.tiktok.com/@revival.ark?_r=1&_t=ZS-93P5LzEWEWO" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+              <img src="./assets/images/tiktok.png" style="filter: invert(1);" alt="TikTok" class="social-icon" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>© <span id="year"></span> Revival Ark. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+  
+  <script type="module" src="js/nav-auth.js"></script>
+  <script>
+    // Active nav highlighting (scoped to wa-links)
+    (function () {
+      const links = document.querySelectorAll(".wa-links a");
+      const current = window.location.pathname.split("/").pop() || "index.html";
+
+      links.forEach(a => {
+        const href = (a.getAttribute("href") || "").split("#")[0];
+        const page = href.split("/").pop();
+        if (page === current) a.classList.add("active");
+        if (current === "index.html" && href === "index.html") a.classList.add("active");
+      });
+    })();
+
+    // footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

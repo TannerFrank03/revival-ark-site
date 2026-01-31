@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revival Ark | Ark of Hope</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playball&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce){
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    .hero--poster { padding: 22px 0; background: #fff; }
+    .hero-poster { display: flex; justify-content: center; }
+    .hero-card { width: min(1040px, 100%); text-align: center; }
+
+    .hero-topline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .hero-mark { height: 64px; width: auto; margin-top: 6px; display: block; }
+  .hero-wordmark {
+  margin: 0;
+  font-weight: 900;
+  font-size: clamp(44px, 5.4vw, 62px);
+  letter-spacing: .02em;
+  line-height: 1;
+
+  /* NEW */
+  font-family: "Canva Sans", "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+
+  .hero-subhead {
+  margin: 2px 0 10px;
+  font-size: 22px;
+  line-height: 1.1;
+
+  /* NEW */
+  font-family: "Lucidity", "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  color: var(--accent);
+  animation: scriptGlow 2.8s ease-in-out infinite;
+}
+
+
+    .hero-copy {
+      margin: 0 auto 14px;
+      max-width: 880px;
+      font-size: 13.5px;
+      line-height: 1.9;
+      color: rgba(0,0,0,.78);
+    }
+
+   .hero-script {
+  font-family: "Madelyn", "Playball", "Brush Script MT", cursive;
+  color: var(--accent);
+  font-size: 1.08em;
+}
+
+
+    .hero-banner {
+      width: min(1040px, 100%);
+      margin: 0 auto;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: #f2f2f2;
+      animation: heroFloat 6s ease-in-out infinite;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      transform: scale(1.02);
+      transition: transform 1s ease;
+      background: #fff;
+    }
+
+    .hero-banner:hover .hero-image { transform: scale(1.05); }
+
+    .verse-card {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      width: min(460px, calc(100% - 180px));
+      background: rgba(255,255,255,.85);
+      border-radius: 14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.12);
+      padding: 12px 14px;
+      backdrop-filter: blur(6px);
+    }
+
+    .verse-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .verse-badge {
+      margin-left: auto;
+      font-size: 10px;
+      font-weight: 900;
+      background: #111;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 10px;
+    }
+
+    .verse-text {
+      margin: 10px 0 0;
+      font-size: 12px;
+      line-height: 1.45;
+      color: #111;
+      opacity: .9;
+    }
+
+    .donate-btn {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      min-width: 120px;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-weight: 900;
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+
+    .btn { transition: transform .18s ease, box-shadow .18s ease, filter .18s ease; }
+    .btn:hover, .donate-btn:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.03);
+      box-shadow: 0 12px 26px rgba(0,0,0,.14);
+    }
+    .btn:active, .donate-btn:active{ transform: translateY(0); }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes scriptGlow {
+      0%, 100% { opacity: .92; }
+      50% { opacity: 1; }
+    }
+
+    .who-kicker{
+      margin: 0 0 8px;
+      font-size: 22px;
+      font-family: "Playball", "Brush Script MT", cursive;
+      color: var(--accent);
+      animation: scriptGlow 2.8s ease-in-out infinite;
+    }
+
+    .who-title{
+      margin: 0 0 10px;
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+
+    .who-body{
+      margin: 0 0 10px;
+      color: #1f1f1f;
+      opacity: .92;
+      line-height: 1.65;
+      font-size: 12px;
+      max-width: 420px;
+    }
+
+    .find-out{
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .stats{ background: #111; color: #fff; padding: 18px 0; }
+    .stat{ transition: transform .18s ease; }
+    .stat:hover{ transform: translateY(-3px); }
+
+    .stat-icon{
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-icon img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform .22s ease;
+    }
+
+    .stat:hover .stat-icon img{ transform: scale(1.06); }
+
+    .gallery-kicker{
+      margin: 0 0 10px;
+      font-size: 22px;
+      text-align: center;
+      font-family: "Playball", "Brush Script MT", cursive;
+      color: var(--accent);
+      animation: scriptGlow 2.8s ease-in-out infinite;
+    }
+
+    .gallery-title{
+      margin: 0 0 10px;
+      font-size: 56px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .gallery-desc{
+      margin: 0 auto 18px;
+      max-width: 740px;
+      text-align: center;
+      color: #1f1f1f;
+      opacity: .88;
+      line-height: 1.65;
+      font-size: 12px;
+    }
+
+    .see-all{
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    #gvPrevImg, #gvMainImg, #gvNextImg { background: #fff; }
+
+    .thumb{ transition: transform .18s ease, opacity .18s ease; }
+    .thumb:hover{ transform: translateY(-2px) scale(1.02); }
+
+    .media-card, .support-card{
+      transition: transform .22s ease, box-shadow .22s ease;
+      will-change: transform;
+    }
+
+    .media-card:hover, .support-card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(0,0,0,.16);
+    }
+
+    .social{
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .social a{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      transition: transform .18s ease, opacity .18s ease, background-color .18s ease;
+    }
+
+    .social a:hover{
+      transform: translateY(-2px);
+      opacity: .95;
+      background: rgba(255,255,255,.06);
+    }
+
+    .social-icon{ width: 18px; height: 18px; object-fit: contain; }
+
+    @media (max-width: 860px){
+      .hero-card{ padding: 0 10px; }
+      .hero-topline{ gap: 12px; }
+      .hero-mark{ height: 54px; margin-top: 2px; }
+      .hero-wordmark{ font-size: clamp(34px, 7vw, 54px); }
+      .hero-copy{ font-size: 13px; line-height: 1.75; padding: 0 6px; }
+      .hero-banner{ border-radius: 16px; }
+      .hero-image{ height: 260px; }
+
+      .verse-card{
+        left: 12px;
+        bottom: 12px;
+        width: min(520px, calc(100% - 24px));
+        padding: 12px;
+      }
+
+      .donate-btn{ right: 12px; bottom: 12px; padding: 10px 18px; }
+      .who-title{ font-size: 36px; }
+      .gallery-title{ font-size: 44px; }
+    }
+
+    @media (max-width: 520px){
+      .hero--poster{ padding: 14px 0 16px; }
+      .hero-topline{ flex-direction: column; align-items: center; gap: 8px; }
+      .hero-mark{ height: 46px; }
+      .hero-wordmark{ font-size: 38px; letter-spacing: .01em; }
+      .hero-subhead{ font-size: 18px; margin-top: 6px; }
+      .hero-copy{ font-size: 12.5px; line-height: 1.7; margin-bottom: 12px; }
+      .hero-banner{ border-radius: 14px; }
+      .hero-image{ height: 220px; }
+
+      .verse-card{ position: static; width: auto; margin: 10px 10px 0; }
+      .donate-btn{ position: static; display: inline-flex; margin: 10px auto 12px; }
+
+      .two-col{ grid-template-columns: 1fr !important; gap: 18px !important; }
+
+      .who-kicker{ font-size: 20px; }
+      .who-title{ font-size: 32px; }
+      .who-body{ max-width: none; font-size: 12.5px; }
+
+      .stats-inner{ flex-wrap: wrap; gap: 14px; justify-content: center; }
+      .stat{ width: calc(50% - 14px); min-width: 150px; }
+      .stat-icon{ width: 90px; height: 90px; }
+
+      .gallery-kicker{ font-size: 20px; }
+      .gallery-title{ font-size: 38px; }
+      .gallery-desc{ font-size: 12.5px; }
+
+      .gallery-viewer{
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+
+      .gv-side{ display: none !important; }
+
+      .gv-main img{
+        width: 100%;
+        height: auto;
+        max-height: 340px;
+        object-fit: cover;
+        border-radius: 14px;
+      }
+
+      .gv-bottom{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+
+      .thumb-strip{
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+      }
+
+      .see-all{ align-self: flex-end; }
+
+      .support-inner{ grid-template-columns: 1fr !important; gap: 18px !important; }
+      .support-cards{ grid-template-columns: 1fr !important; gap: 14px !important; }
+    }
+
+    @media (max-width: 380px){
+      .hero-wordmark{ font-size: 34px; }
+      .stat{ width: 100%; }
+    }
+
+    /* ==============================
+   CUSTOM FONTS (LOCAL)
+   Put these files in /assets/fonts/
+============================== */
+@font-face{
+  font-family:"Canva Sans";
+  src:url("./assets/fonts/CanvaSans-Regular.otf") format("otf");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:"Lucidity";
+  src:url("./assets/fonts/Lucidity-Expand.woff") format("woff");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:"Madelyn";
+  src:url("./assets/fonts/MadelynFill-Trial-Regular.otf") format("otf");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Revival Ark Home">
+        <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="brand-logo" />
+        Revival Ark
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="who-we-are.html">About Us</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="donation.html">Support Our Vision</a>
+        <a href="contact.html">Contact Us</a>
+        <!-- AUTH SLOT (single element) -->
+        <a href="signin.html" id="navLogin" class="nav-auth">Login</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero hero--poster">
+      <div class="container hero-poster">
+        <div class="hero-card">
+          <div class="hero-topline">
+            <img class="hero-mark" src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark logo" />
+            <h1 class="hero-wordmark">REVIVAL ARK</h1>
+          </div>
+
+          <p class="hero-subhead" style="color: black;">A Hand Reached Is A Soul Saved</p>
+
+          <p class="hero-copy">
+            <span class="hero-script">Revival Ark</span> is a youth-led
+            <span class="hero-script">Christian</span> movement dedicated to restoring hope, faith, and purpose
+            through monthly outreaches. We serve communities with care parcels, prayer, and spiritual support,
+            reaching over <span class="accent"><strong>100</strong></span> people every month.
+          </p>
+
+          <div class="hero-banner">
+            <img src="./assets/images/img_2071.jpg" alt="Revival Ark outreach" class="hero-image" />
+
+            <div class="verse-card">
+              <div class="verse-head">
+                <span class="verse-title">VERSE OF THE DAY: Proverbs 16:20</span>
+                <span class="verse-badge">NKJV</span>
+              </div>
+              <p class="verse-text">
+                “He who heeds the word wisely will find good,<br />
+                And whoever trusts in the Lord, happy is he.”
+              </p>
+            </div>
+
+            <a class="btn btn-solid donate-btn" href="donation.html">Donate</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div class="media-card">
+          <div class="media-image">
+            <img src="./assets/images/7d34fe54-2a52-4e0a-b885-c4b826d33796.jpg" alt="Revival Ark outreach moment" />
+          </div>
+        </div>
+
+        <div>
+          <p class="who-kicker">Who Are We?</p>
+          <h2 class="who-title">What is<br />Revival<br />Ark?</h2>
+          <p class="who-body">
+            We are a faith-driven organisation committed to planting seeds of faith in the hearts of those
+            who have drifted away from God. Inspired by the teachings of Jesus Christ, we strive to meet both
+            physical and spiritual needs through compassionate outreach and consistent service. Through our
+            monthly outreach programme, Ark of Hope, we aim to reach at least 100 people every month, offering
+            essential parcels, prayer, encouragement, and meaningful connection. Our mission is to embody the
+            love, hope, and compassion at the core of our Christian walk.
+          </p>
+          <a class="find-out" href="who-we-are.html">Find out more...</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" id="stats">
+      <div class="container stats-inner">
+        <div class="stat">
+          <div class="stat-icon" aria-hidden="true">
+            <img src="./assets/info svg/Lives Reached.svg" alt="" />
+          </div>
+          <div>
+            <div class="stat-number accent" data-target="1000" data-suffix="+">0</div>
+            <div class="stat-label">Lives Reached</div>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon" aria-hidden="true">
+            <img src="./assets/info svg/Meals Served.svg" alt="" />
+          </div>
+          <div>
+            <div class="stat-number accent" data-target="1000" data-suffix="+">0</div>
+            <div class="stat-label">Meals Served</div>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon" aria-hidden="true">
+            <img src="./assets/info svg/Bibles Shared.svg" alt="" />
+          </div>
+          <div>
+            <div class="stat-number accent" data-target="1000" data-suffix="+">0</div>
+            <div class="stat-label">Bibles Shared</div>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon" aria-hidden="true">
+            <img src="./assets/info svg/No. Of Outreaches.svg" alt="" />
+          </div>
+          <div>
+            <div class="stat-number accent" data-target="6">0</div>
+            <div class="stat-label">Number of Outreaches</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery" id="gallery">
+      <div class="container">
+        <p class="gallery-kicker">What Have We Been Up To?</p>
+        <h2 class="gallery-title">Our Gallery</h2>
+        <p class="gallery-desc">
+          Our gallery highlights Revival Ark’s ongoing outreach efforts through Ark of Hope. These moments reflect our commitment
+          to providing essential support, spiritual encouragement, and meaningful community engagement. Explore our recent activities
+          and see the impact made through the dedication of our volunteers.
+        </p>
+
+        <div class="gallery-viewer" aria-label="Gallery viewer">
+          <button class="gv-side gv-prev" type="button" aria-label="Previous image">
+            <img id="gvPrevImg" src="./assets/images/IMG_0035.jpg" alt="Previous gallery image" />
+          </button>
+
+          <div class="gv-main" aria-label="Selected image">
+            <img id="gvMainImg" src="./assets/images/IMG_0035.jpg" alt="Selected gallery image" />
+          </div>
+
+          <button class="gv-side gv-next" type="button" aria-label="Next image">
+            <img id="gvNextImg" src="./assets/images/IMG_0035.jpg" alt="Next gallery image" />
+          </button>
+        </div>
+
+        <div class="gv-bottom">
+          <div class="thumb-strip" id="thumbStrip" aria-label="Gallery thumbnails"></div>
+          <a class="see-all" href="gallery.html">see all...</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section support" id="support">
+      <div class="container support-inner">
+        <div class="support-copy">
+          <p class="kicker script accent">Play your Part?</p>
+          <h2 class="h2">Support<br />Our<br />Vision</h2>
+          <p class="body">
+            Your donations make our outreach possible. We accept food, money, clothes, blankets, toys, Bibles,
+            and any essential living products. Every contribution helps support individuals in need and strengthens
+            our mission. Thank you for partnering with us.
+          </p>
+        </div>
+
+        <div class="support-cards">
+          <article class="support-card">
+            <div class="support-img">
+              <img src="./assets/images/IMG_0035.jpg" alt="Donate" />
+            </div>
+            <a class="btn btn-solid" href="donation.html">Donate</a>
+          </article>
+
+          <article class="support-card">
+            <div class="support-img">
+              <img src="./assets/images/IMG_2074.JPG" alt="Volunteer" />
+            </div>
+            <a class="btn btn-solid" href="whatsapp.html">Volunteer</a>
+          </article>
+
+          <article class="support-card">
+            <div class="support-img">
+              <img src="./assets/images/image00026.jpeg" alt="Collaborate" />
+            </div>
+            <a class="btn btn-solid" href="#contact">Let's Collaborate</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="contact">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="footer-logo-img" />
+        </div>
+
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h3>GET TO KNOW US</h3>
+            <a href="who-we-are.html">Get To Know Us</a>
+            <a href="who-we-are.html#team">Meet The Team</a>
+            <a href="gallery.html">Our Gallery</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>HELP US MAKE A DIFFERENCE</h3>
+            <a href="#contact">Pray</a>
+            <a href="donation.html">Donate</a>
+            <a href="whatsapp.html">Volunteer</a>
+            <a href="#contact">Collaborate</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>CONNECT WITH US</h3>
+            <p class="footer-text">+27 67 225 2699</p>
+            <p class="footer-text">info@revival.ark.co.za</p>
+
+            <div class="social">
+              <a
+                href="https://www.instagram.com/revival_ark_?igsh=dGUxdmQyZGZlbHI0"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                title="Instagram"
+              >
+                <img src="./assets/images/instagram.png" alt="Instagram" class="social-icon" />
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@revival.ark?_r=1&_t=ZS-93P5LzEWEWO"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                title="TikTok"
+              >
+                <img src="./assets/images/tiktok.png" alt="TikTok" class="social-icon" style="filter: invert(1)" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <small>© <span id="year"></span> Revival Ark. All rights reserved.</small>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+    $("#year").textContent = new Date().getFullYear();
+
+    (function navToggle() {
+      const btn = $(".nav-toggle");
+      const menu = $("#navMenu");
+      if (!btn || !menu) return;
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+
+    (function activeNav() {
+      const current = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+      $$(".nav-links a").forEach((a) => {
+        const href = (a.getAttribute("href") || "").split("#")[0].split("/").pop().toLowerCase();
+        if (href && href === current) a.classList.add("active");
+      });
+    })();
+
+    window.GALLERY_IMAGES = [
+      "./assets/images/IMG_0035.jpg",
+      "./assets/images/IMG_2080.jpg",
+      "./assets/images/IMG_9332.jpg",
+      "./assets/images/img_2071.jpg",
+      "./assets/images/7d34fe54-2a52-4e0a-b885-c4b826d33796.jpg",
+      "./assets/images/1f51f2a4-5a41-480d-9a68-ad0cfa7fd647.jpg",
+      "./assets/images/7a486d21-d077-4fef-a75e-726c89874144.jpg",
+      "./assets/images/b315fbe8-d58b-47f4-add4-c07f0955ebd8.jpg",
+      "./assets/images/ed0c1e80-bb6a-4659-b0f2-b9fbd707c4fa.jpg",
+      "./assets/images/f09e65bb-d6d0-4056-b950-57367aa79035.jpg",
+      "./assets/images/fbf5ee1f-b7c1-4148-a474-4fc831f0e490.jpg",
+      "./assets/images/image00004.jpeg",
+      "./assets/images/image00005.jpeg",
+      "./assets/images/image00006.jpeg",
+      "./assets/images/image00007.jpeg",
+      "./assets/images/image00008.jpeg",
+      "./assets/images/image00009.jpeg",
+      "./assets/images/image00010.jpeg",
+      "./assets/images/image00011.jpeg",
+      "./assets/images/image00012.jpeg",
+      "./assets/images/image00013.jpeg",
+      "./assets/images/image00014.jpeg",
+      "./assets/images/image00015.jpeg",
+      "./assets/images/image00016.jpeg",
+      "./assets/images/image00017.jpeg",
+      "./assets/images/image00018.jpeg",
+      "./assets/images/image00019.jpeg",
+      "./assets/images/image00020.jpeg",
+      "./assets/images/image00021.jpeg",
+      "./assets/images/image00022.jpeg",
+      "./assets/images/image00023.jpeg",
+      "./assets/images/image00024.jpeg",
+      "./assets/images/image00025.jpeg",
+      "./assets/images/image00026.jpeg",
+      "./assets/images/image00027.jpeg",
+      "./assets/images/IMG_0103.JPG",
+      "./assets/images/IMG_0127.JPG",
+      "./assets/images/IMG_0147.JPG",
+      "./assets/images/IMG_1747.JPG",
+      "./assets/images/IMG_2071.JPG",
+      "./assets/images/IMG_2072.JPG",
+      "./assets/images/IMG_2073.JPG",
+      "./assets/images/IMG_2074.JPG",
+      "./assets/images/IMG_2077.JPG",
+      "./assets/images/IMG_2079.JPG",
+      "./assets/images/IMG_2080.JPG",
+      "./assets/images/IMG_2082.JPG",
+      "./assets/images/IMG_2083.JPG",
+      "./assets/images/IMG_2084.JPG",
+      "./assets/images/IMG_3375.JPG",
+      "./assets/images/IMG_3378.jpg",
+      "./assets/images/IMG_3388.jpg",
+      "./assets/images/IMG_3389.jpg",
+      "./assets/images/IMG_3390.jpg",
+      "./assets/images/IMG_3404.JPG",
+      "./assets/images/IMG_3407.JPG",
+      "./assets/images/IMG_3459.JPG",
+      "./assets/images/IMG_3462.JPG"
+    ];
+
+    (function galleryViewer() {
+      const images = window.GALLERY_IMAGES || [];
+      const prevImg = $("#gvPrevImg");
+      const mainImg = $("#gvMainImg");
+      const nextImg = $("#gvNextImg");
+      const strip = $("#thumbStrip");
+      if (!images.length || !prevImg || !mainImg || !nextImg || !strip) return;
+
+      let idx = 0;
+
+      function render() {
+        const prev = (idx - 1 + images.length) % images.length;
+        const next = (idx + 1) % images.length;
+
+        prevImg.src = images[prev];
+        mainImg.src = images[idx];
+        nextImg.src = images[next];
+
+        strip.innerHTML = "";
+        images.forEach((src, i) => {
+          const t = document.createElement("button");
+          t.type = "button";
+          t.className = "thumb" + (i === idx ? " active" : "");
+          t.style.backgroundImage = `url("${src}")`;
+          t.addEventListener("click", () => { idx = i; render(); });
+          strip.appendChild(t);
+        });
+      }
+
+      $(".gv-prev")?.addEventListener("click", () => { idx = (idx - 1 + images.length) % images.length; render(); });
+      $(".gv-next")?.addEventListener("click", () => { idx = (idx + 1) % images.length; render(); });
+
+      render();
+    })();
+
+    (function statsCount() {
+      const section = $("#stats");
+      if (!section) return;
+
+      const nums = $$(".stat-number[data-target]", section);
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const format = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      function animate(el, target, duration) {
+        const suffix = el.getAttribute("data-suffix") || "";
+        const startTime = performance.now();
+
+        function tick(now) {
+          const t = Math.min(1, (now - startTime) / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = format(Math.round(target * eased)) + suffix;
+          if (t < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      function run() {
+        nums.forEach((el) => {
+          const target = parseInt(el.getAttribute("data-target"), 10) || 0;
+          const suffix = el.getAttribute("data-suffix") || "";
+          if (reduced) el.textContent = format(target) + suffix;
+          else animate(el, target, target >= 1000 ? 1400 : 900);
+        });
+      }
+
+      let ran = false;
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (!entries[0]?.isIntersecting || ran) return;
+          ran = true;
+          run();
+          io.disconnect();
+        },
+        { threshold: 0.35 }
+      );
+
+      io.observe(section);
+    })();
+  </script>
+</body>
+</html>

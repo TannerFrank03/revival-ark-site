@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revival Ark | Sign In</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+
+  <style>
+    body{ background:#f4f4f4; }
+
+    .auth-page{
+      min-height: calc(100vh - 72px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 40px 24px 70px;
+      position: relative;
+      overflow:hidden;
+    }
+
+    .auth-page::before{
+      content:"";
+      position:absolute;
+      inset:-80px;
+      background:
+        radial-gradient(600px 320px at 50% 0%, rgba(0,0,0,.10), transparent 60%),
+        radial-gradient(700px 380px at 50% 100%, rgba(227,27,35,.08), transparent 65%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .auth-card{
+      position: relative;
+      z-index:1;
+      width: min(430px, 100%);
+      background:#fff;
+      border-radius: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.16);
+      padding: 28px 28px 22px;
+    }
+
+    .auth-top{ text-align:center; margin-bottom: 12px; }
+
+    .auth-logo-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom: 10px;
+    }
+    .auth-logo-wrap img{ height: 46px; width:auto; display:block; }
+
+    .auth-title{
+      margin: 0;
+      font-size: 18px;
+      font-weight: 900;
+      color:#111;
+    }
+
+    .auth-switch{
+      display:flex;
+      width: 100%;
+      border-radius: 14px;
+      overflow:hidden;
+      background: rgba(0,0,0,.06);
+      border: 1px solid rgba(0,0,0,.06);
+      margin-top: 14px;
+    }
+    .auth-switch button{
+      flex:1;
+      border:none;
+      background:transparent;
+      padding: 11px 14px;
+      font-weight: 900;
+      font-size: 12px;
+      cursor:pointer;
+      color: rgba(0,0,0,.65);
+    }
+    .auth-switch button.active{
+      background: var(--accent);
+      color:#fff;
+    }
+
+    .auth-sub{ margin-top: 12px; margin-bottom: 8px; text-align:left; }
+    .auth-sub-title{ font-weight: 900; font-size: 11px; color:#111; }
+    .muted{ font-weight: 600; color: rgba(0,0,0,.45); font-style: italic; }
+
+    .auth-form{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .field input{
+      width:100%;
+      border: 1px solid rgba(0,0,0,.14);
+      border-radius: 6px;
+      padding: 11px 12px;
+      font: inherit;
+      font-size: 13px;
+      outline:none;
+      background:#fff;
+    }
+
+    .divider{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin: 10px 0 6px;
+      color: rgba(0,0,0,.45);
+    }
+    .divider span{ height:1px; background: rgba(0,0,0,.10); flex: 1; }
+    .divider small{ font-size: 11px; font-weight: 700; white-space: nowrap; }
+
+    .oauth{
+      display:flex;
+      gap: 12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top: 4px;
+    }
+
+    .auth-btn{
+      height: 44px;
+      padding: 0 14px;
+      border-radius: 10px;
+      font-weight: 900;
+      font-size: 12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      cursor:pointer;
+      border: 1px solid rgba(0,0,0,.14);
+      background:#fff;
+      min-width: 170px;
+      white-space: nowrap;
+    }
+    .auth-btn img{ height: 16px; width:auto; display:block; }
+
+    .auth-bottom{
+      margin-top: 10px;
+      text-align:center;
+      font-size: 12px;
+      color: rgba(0,0,0,.55);
+    }
+
+    /* message box */
+    .auth-msg{
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      line-height: 1.35;
+      display:none;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(0,0,0,.03);
+      color:#111;
+    }
+    .auth-msg.ok{
+      display:block;
+      border-color: rgba(0, 140, 70, .25);
+      background: rgba(0, 140, 70, .08);
+    }
+    .auth-msg.err{
+      display:block;
+      border-color: rgba(227,27,35,.25);
+      background: rgba(227,27,35,.07);
+    }
+
+    [hidden]{ display:none !important; }
+
+    @media (max-width: 420px){
+      .auth-card{ padding: 22px 18px 18px; }
+      .auth-btn{ min-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Revival Ark Home">
+        <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="brand-logo" />
+        Revival Ark
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="who-we-are.html">About Us</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="donation.html">Support Our Vision</a>
+        <a href="contact.html">Contact Us</a>
+        <!-- AUTH SLOT (single element) -->
+         <a href="signin.html" id="navLogin" class="nav-auth">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <section class="auth-card">
+      <div class="auth-top">
+        <div class="auth-logo-wrap" aria-hidden="true">
+          <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="" />
+        </div>
+
+        <h1 class="auth-title" id="authTitle">Welcome back</h1>
+
+        <div class="auth-switch" role="tablist" aria-label="Auth mode">
+          <button type="button" id="tabLogin" class="active" aria-selected="true">Login</button>
+          <button type="button" id="tabSignup" aria-selected="false">Sign Up</button>
+        </div>
+
+        <div id="authMsg" class="auth-msg" role="status" aria-live="polite"></div>
+      </div>
+
+      <!-- LOGIN -->
+      <div id="loginWrap">
+        <div class="auth-sub">
+          <div class="auth-sub-title">Login <span class="muted">(Use your details)</span></div>
+        </div>
+
+        <form id="loginForm" class="auth-form" autocomplete="on">
+          <label class="field">
+            <input name="email" type="email" placeholder="Email Address" required />
+          </label>
+
+          <label class="field">
+            <input name="password" type="password" placeholder="Password" minlength="6" required />
+          </label>
+
+          <button class="btn btn-solid full" type="submit">Log In</button>
+
+          <div class="divider">
+            <span></span><small>or continue with</small><span></span>
+          </div>
+
+          <div class="oauth">
+            <button class="auth-btn" type="button" id="btnGoogle">
+              <img src="./assets/images/Logos/Google__G__logo.svg.webp" alt="Google" />
+              Continue with Google
+            </button>
+
+            <button class="auth-btn" type="button" id="btnApple">
+              <img src="./assets/images/Logos/apple-logo.svg" alt="Apple" />
+              Continue with Apple
+            </button>
+          </div>
+
+          <div class="auth-bottom">
+            <small>Don’t have an account? <a class="accent link" href="#" data-mode="signup">Sign Up</a></small>
+          </div>
+        </form>
+      </div>
+
+      <!-- SIGNUP -->
+      <div id="signupWrap" hidden>
+        <div class="auth-sub">
+          <div class="auth-sub-title">Details <span class="muted">(All donors are kept anonymous)</span></div>
+        </div>
+
+        <form id="signupForm" class="auth-form" autocomplete="on">
+          <label class="field">
+            <input name="firstName" type="text" placeholder="First Name/Anonymous Name" required />
+          </label>
+
+          <label class="field">
+            <input name="lastName" type="text" placeholder="Last Name/Anonymous" required />
+          </label>
+
+          <label class="field">
+            <input name="email" type="email" placeholder="Email Address" required />
+          </label>
+
+          <label class="field">
+            <input name="password" type="password" placeholder="Password (min 6 chars)" minlength="6" required />
+          </label>
+
+          <button class="btn btn-solid full" type="submit">Sign Up</button>
+
+          <div class="divider">
+            <span></span><small>or continue with</small><span></span>
+          </div>
+
+          <div class="oauth">
+            <button class="auth-btn" type="button" id="btnGoogle2">
+              <img src="./assets/images/Logos/Google__G__logo.svg.webp" alt="Google" />
+              Continue with Google
+            </button>
+
+            <button class="auth-btn" type="button" id="btnApple2">
+              <img src="./assets/images/Logos/apple-logo.svg" alt="Apple" />
+              Continue with Apple
+            </button>
+          </div>
+
+          <div class="auth-bottom">
+            <small>Already have an account? <a class="accent link" href="#" data-mode="login">Log In</a></small>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="./assets/images/Logos/Revival Ark Logo (Black).png" alt="Revival Ark" class="footer-logo-img" />
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <small>© <span id="year"></span> Revival Ark. All rights reserved.</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/nav-auth.js"></script>
+  <script type="module" src="js/signin-auth.js"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // mobile nav toggle
+    (function () {
+      const btn = document.querySelector(".nav-toggle");
+      const menu = document.getElementById("navMenu");
+      if (!btn || !menu) return;
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+
+    // active nav
+    (function () {
+      const links = document.querySelectorAll(".nav-links a");
+      const current = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+      links.forEach((a) => {
+        const href = (a.getAttribute("href") || "").split("#")[0].split("/").pop().toLowerCase();
+        if (href && href === current) a.classList.add("active");
+      });
+    })();
+  </script>
+</body>
+</html>
